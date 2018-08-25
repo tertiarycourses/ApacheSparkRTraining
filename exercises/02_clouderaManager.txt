@@ -1,0 +1,58 @@
+############# cloudera manager
+
+http://quickstart.cloudera:7180
+username: cloudera
+password: cloudera
+
+############# in the browser go to cloudera manager
+
+check all the servers are running
+it amy take 10 minutes for all the servers to start running properly
+
+###########  Starting a Service on All Hosts
+The order in which to start services is:
+
+Cloudera Management Service
+ZooKeeper
+HDFS
+Solr
+Flume
+HBase
+Key-Value Store Indexer
+MapReduce or YARN
+Hive
+Impala
+Oozie
+Sqoop
+Hue
+
+
+############## Stopping a Service on All Hosts
+On the Home > Status tab, click  to the right of the service name and select Stop.
+Click Stop that appears in the next screen to confirm. When you see a Finished status, the service has stopped.
+The order in which to stop services is:
+
+Hue
+Sqoop
+Oozie
+Impala
+Hive
+MapReduce or YARN
+Key-Value Store Indexer
+HBase
+Flume
+Solr
+HDFS
+ZooKeeper
+Cloudera Management Service
+
+
+############ Restarting a Service
+It is sometimes necessary to restart a service, which is essentially a combination of stopping a service and then starting it again. For example, if you change the hostname or port where the Cloudera Manager is running, or you enable TLS security, you must restart the Cloudera Management Service to update the URL to the Server.
+On the Home > Status tab, click  to the right of the service name and select Restart.
+Click Start on the next screen to confirm. When you see a Finished status, the service has restarted.
+To restart all services, use the restart cluster action.
+
+############# best practices
+
+stop all services if you dont nee them and before you close the VM

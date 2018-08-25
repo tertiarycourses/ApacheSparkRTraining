@@ -1,0 +1,25 @@
+Download ClouderaImpalaODBC64.msi from cloudera (just google search)
+
+############################################
+
+configure your odbc you downloaded > search for odbc in CMD
+
+############# IMPALA ########################
+
+Data Source Name : Sample Cloudera Impala DSN
+Description : Sample Cloudera Impala DSN
+Host: <your host ip> *
+port: 21050
+database: default
+
+Authentication:
+Mechanism: No authentication
+
+
+
+*
+you need to change the host to that of your VM
+to find out the ip address
+
+open a shell window > type  "ifconfig"
+                    > you should see the ip address of ETH1

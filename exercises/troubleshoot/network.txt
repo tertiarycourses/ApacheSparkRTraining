@@ -1,0 +1,60 @@
+your PC > contol panel > network and sharing center
+                       > change adapter settings
+                       > wireless adapter > detail
+                                 > ipv4 default gateway IP add (*)
+                                             *** 192.168.1.254 **
+
+                       > right click > properties 
+                              > use the following ip address
+
+                              ip add > 192.168.1.17
+                              subnet  > 255.255.255.0
+                             default gateway > *
+
+
+                            > use the following DNS server add
+                              
+                              preferred DNS  8.8.8.8
+                              alternate DNS  8.8.4.4
+
+                           > OK
+
+
+your VM  > settings  > network
+ 
+                       adapter1>  bridged adapter
+                               > select your wireless nework
+                               > allow all
+                               > cable connected
+
+                       adpater 2 > host-only adapter
+                                > allow VMs
+                                > cable connected
+
+                        adapter3 > NAT
+
+
+          START >>> $ping google.com  > see can connect or not
+
+        
+
+                     $nmcli d
+
+                     $vi  /etc/sysconfig/network-scripts/ifcfg-lo
+
+                         BOOTPROTO=static
+                         IPADDR=192.168.1.19
+                         GATEWAY=(*)
+                         DNS1=8.8.8.8
+                         DNS2=8.8.4.4
+                         NETMASK=255.255.255.0
+
+
+                      $ service network restart
+
+                      $ ping google.com  (Ctrl C to stop)
+
+
+
+
+                               

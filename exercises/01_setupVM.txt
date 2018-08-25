@@ -1,0 +1,89 @@
+Download virtualBox
+=====================
+https://www.virtualbox.org/wiki/Downloads
+
+
+Download CLOUDERA Quickstart VM
+================================
+register and download
+https://www.cloudera.com/downloads/quickstart_vms/5-13.html
+
+
+Download Cloudera ODBC connector
+=================================
+https://www.cloudera.com/downloads/connectors/impala/odbc/2-5-44.html
+
+
+############ setup VM ############
+
+New > Name (eg cloudera Hadoop)
+    > Linux  > RedHat(64bit)
+
+MemorySize> 10GB memory (depending on your RAM)
+Processor > 2
+HardDisk> use existing virtual hard disk > select
+
+settings>>>
+system > uncheck floppy
+network > bridged adaptor
+                                                    
+****** START THE MACHINE *******
+
+########## sharing folders & files ############
+
+first time > launch cloudera express
+
+
+#### linux 
+
+Devices >  Shared Clipboard > bidirectional
+           Drag & Drop  > bidirectional
+
+Devices > insert guest addition image > click to install> password: cloudera
+
+################## connecting a folder
+
+create a folder and call it "cloudera_share"
+place your files inside it
+
+
+Devices > shared folder > shared folder settinggs
+
+select the "+" symbols and search for your folder
+check all the boxes
+
+
+open a terminal:
+
+cd /media
+sudo mkdir cloudera_share
+sudo mount -t vboxsf cloudera_share /media/cloudera_share
+
+********** when folder no longer connects
+
+cd /media
+sudo umount /media/sf_cloudera_share
+sudo mount -t vboxsf cloudera_share /media/cloudera_share
+
+************ reconfigure the network (if necessary)
+
+### temp change
+
+$ sudo ifconfig eth0  192.168.1.xxx netmask 255.255.255.0 up
+xxx can be 113
+$ route add default gw 192.168.1.1
+echo "nameserver 1.1.1.1">/etc/resolve.conf
+
+
+$service network restart
+$ifconfig
+$ ping google.com  (Ctrl C to stop)
+
+$ nmcli d
+
+************* restart network
+
+$ sudo /etc/init.d/network restart
+then reconnect internet
+then recoonnect eth01
+

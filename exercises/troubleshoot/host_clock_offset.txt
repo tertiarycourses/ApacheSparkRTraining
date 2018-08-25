@@ -1,0 +1,22 @@
+Many thanks. I followed these  steps and it fixed my clock offset issue.
+
+ 
+
+* verified/updated the /etc/ntp.conf file to be the same across the cluster
+
+* stopped the ntp daemon: /etc/init.d/ntpd stop
+
+* connected to the ntp server named in the ntp.conf file: 
+ntpupdate <ntp_server>
+
+ntpdate 1a.ncomputers.org
+        (173.212.196.208)
+
+
+* started the ntp daemon: /etc/init.d/ntpd start
+
+* added ntpd to the startup manager: chkconfig add ntpd
+
+* set ntpd to start in default reunlevels: chkconfig ntpd on
+
+sudo service cloudera-scm-agent restart
