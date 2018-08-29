@@ -37,21 +37,21 @@ export HADOOP_CONF=/usr/lib/hadoop/etc/hadoop/
 export HADOOP_CONF_DIR=/etc/hadoop/conf/
 export YARN_CONF=/usr/lib/hadoop/etc/hadoop/
 export SPARK_HOME=/usr/lib/spark/
-export SPARK_CONF_DIR=/usr/lib/spark/conf
-export JAVA_HOME=/usr/java/java8
+export SPARK_CONF_DIR=/usr/lib/spark/conf/
+export PATH=$SPARK_HOME/ec2:$PATH
+export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk.x86_64/  # don't use>(/usr/java/jdk1.7.0_67-cloudera)
 export LD_LIBRARY_PATH=/usr/lib64/R/library/rJava/libs/rJava.so
 export R_JAVA_LD_LIBRARY_PATH=${JAVA/_HOME}/jre/lib/amd64/server
 export HADOOP_COMMON_LIB_NATIVE_DIR=/usr/lib/hadoop/lib/native/
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
-** export PATH=${PATH}:${SPARK_HOME}/bin:${JAVA_HOME}/bin ** (check if needed)
 
 
 
 ####################################### install R #####################################################
 
 $ sudo yum install -y R R-devel
-$ sudo R CMD javareconf JAVA_HOME=/usr/java/java8
-$ R CMD javareconf -e JAVA_HOME=/usr/java/java8
+$ sudo R CMD javareconf JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk.x86_64/
+$ R CMD javareconf -e JAVA_HOME= /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/
 
 ################################ install rJava help #################################################
 
@@ -61,8 +61,8 @@ go to dir         > cd  /etc/ld.so.conf.d/
 create a file    > sudo touch java.conf
                    sudo vi java.conf
 
-     /usr/java/java8/lib/amd64
-     /usr/java/java8/lib/amd64/server
+     usr/lib/jvm/jre-1.8.0-openjdk.x86_64/lib/amd64
+    usr/lib/jvm/jre-1.8.0-openjdk.x86_64/lib/amd64/server
 
 then >   sudo ldconfig
      >   sudo R CMD javareconf
@@ -83,7 +83,7 @@ Sys.setenv(HADOOP_CONF_DIR="/etc/hadoop/conf/")
 Sys.setenv(YARN_CONF="/usr/lib/hadoop/etc/hadoop/")
 Sys.setenv(SPARK_HOME="/usr/lib/spark")
 Sys.setenv(SPARK_CONF_DIR="/usr/lib/spark/conf/")
-Sys.setenv(JAVA_HOME="/usr/java/java8")
+Sys.setenv(JAVA_HOME="/usr/lib/jvm/jre-1.8.0-openjdk.x86_64/")
 Sys.setenv(LD_LIBRARY_PATH="/usr/lib64/R/library/rJava/libs/rJava.so")
 Sys.setenv(HADOOP_COMMON_LIB_NATIVE_DIR="/usr/lib/hadoop/lib/native/")
 
